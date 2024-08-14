@@ -44,10 +44,10 @@ def handle_pdf_conversion(message):
 @bot.message_handler(commands=['Acover'])
 def start_form(message):
     instructions = (
-        "Please provide all the details in a single line, separated by spaces:\n\n"
-        "Title CourseTitle TeacherName Designation YourName ID Section Semester Department SubmissionDate\n\n"
+        "Please provide all the details in a single line, separated by commas:\n\n"
+        "Title,CourseTitle,TeacherName,Designation,YourName,ID,Section,Semester,Department,SubmissionDate\n\n"
         "Example:\n"
-        "AI101 IntroductionToAI JohnDoe Professor AliceSmith 12345678 B 3rd CS 2024-08-20\n\n"
+        "AI101,IntroductionToAI,JohnDoe,Professor,AliceSmith,12345678,B,3rd,CS,2024-08-20\n\n"
         "Type /cancel to cancel the process."
     )
     bot.reply_to(message, instructions)
@@ -96,7 +96,8 @@ def handle_docs(message):
 
 @bot.message_handler(func=lambda message: True)
 def handle_input(message):
-    user_input = message.text.split()
+    # Split the user input by commas
+    user_input = [item.strip() for item in message.text.split(',')]
 
     if len(user_input) != len(placeholders):
         bot.reply_to(message, "Please provide all details in the correct format.")
