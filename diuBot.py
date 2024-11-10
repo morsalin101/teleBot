@@ -5,7 +5,7 @@ from fpdf import FPDF
 import os
 
 # Directly assign the bot token
-BOT_TOKEN = '7181692028:AAHZg0n47h6hUs0VriLb24X_twNUZDBBXo8'
+BOT_TOKEN = '7181692028:AAHZg0n47h6hUs0VriLb24X_twNUZDBBXo'
 bot = telebot.TeleBot(BOT_TOKEN)
 
 # Define paths
